@@ -18,12 +18,10 @@ describe Alouette do
     end
 
     it "generates the correct line for the first verse" do
-      skip
       Alouette.lines_for_verse(0).must_equal ['Et la tête!']
     end
 
     it "generates the correct lines for the third verse" do
-      skip
       expected_lines = [
         "Et les yeux!",
         "Et le bec!",
@@ -35,12 +33,10 @@ describe Alouette do
 
   describe "verse" do
     it "returns a string" do
-      skip
       Alouette.verse(3).must_be_kind_of String
     end
 
     it "first two lines begin with 'Je te plumerai'" do
-      skip
       lines = Alouette.verse(3).split("\n")
 
       # If there aren't at least 2 lines, don't continue
@@ -52,7 +48,6 @@ describe Alouette do
     end
 
     it "last three lines are 'Alouette! Alouette! A-a-a-ah'" do
-      skip
       lines = Alouette.verse(3).split("\n")
 
       # If there aren't at least 3 lines, don't continue
@@ -64,7 +59,6 @@ describe Alouette do
     end
 
     it "middle lines begin with 'Et ' and end with '!'" do
-      skip
       lines = Alouette.verse(3).split("\n")
 
       # If there aren't at least 6 lines, don't continue
@@ -80,9 +74,8 @@ describe Alouette do
     end
 
     it "generates the third verse" do
-      skip
       expected_verse = <<-__END_VERSE__
-      Je te plumerai les yeux.
+Je te plumerai les yeux.
 Je te plumerai les yeux.
 Et les yeux!
 Et les yeux!
@@ -106,12 +99,10 @@ A-a-a-ah
     end
 
     it "returns a string" do
-      skip
       Alouette.sing.must_be_kind_of String
     end
 
     it "begins and ends with the refrain" do
-      skip
       song = Alouette.sing
       refrain = "Alouette, gentille alouette,\nAlouette, je te plumerai."
       song.start_with?(refrain + "\n\n").must_equal true, "Song didn't begin with the refrain"
@@ -119,7 +110,6 @@ A-a-a-ah
     end
 
     it "generates the full lyrics" do
-      skip
       Alouette.sing.must_equal expected_lyrics
     end
   end
