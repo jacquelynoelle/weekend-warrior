@@ -18,20 +18,13 @@ class Alouette
     word = lines_for_verse.first[3..((lines_for_verse.first.length) - 2)]
     verse = ""
 
-    2.times do
-      verse << "Je te plumerai #{word}.\n"
-    end
+    2.times { verse << "Je te plumerai #{word}.\n" }
 
     (verse_num + 1).times do |i|
-      2.times do
-        verse << (lines_for_verse[i] + "\n")
-      end
+      2.times { verse << (lines_for_verse[i] + "\n") }
     end
 
-    2.times do
-      verse << "Alouette!\n"
-    end
-
+    2.times { verse << "Alouette!\n" }
     verse << "A-a-a-ah"
 
     return verse
