@@ -1,25 +1,22 @@
-require 'pry'
-
 class Complement
-  def self.of_dna(input)
-    dna = input.split("")
-    rna = ""
-    dna.each do |nucleotide|
-      rna << convert(nucleotide, "DNA")
-    end
-    return rna
+  def self.of_dna(strand)
+    return self.conversion_loop(strand, "DNA")
   end
 
-  def self.of_rna(input)
-    rna = input.split("")
-    dna = ""
-    rna.each do |nucleotide|
-      dna << convert(nucleotide, "RNA")
-    end
-    return dna
+  def self.of_rna(strand)
+    return self.conversion_loop(strand, "RNA")
   end
 
   private
+
+    def self.conversion_loop(strand, type)
+      letters = strand.split("")
+      converted_strand = ""
+      letters.each do |nucleotide|
+        converted_strand << convert(nucleotide, type)
+      end
+      return converted_strand
+    end
 
     def self.convert(nucleotide, type)
       case nucleotide.upcase
