@@ -1,4 +1,7 @@
 class Complement
+  DNA = {"C" => "G", "G" => "C", "T" => "A", "A" => "U"}
+  RNA = {"C" => "G", "G" => "C", "A" => "T", "U" => "A"}
+
   def self.of_dna(strand)
     return self.conversion_loop(strand, "DNA")
   end
@@ -19,22 +22,14 @@ class Complement
     end
 
     def self.convert(nucleotide, type)
-      case nucleotide.upcase
-      when "C"
-        return "G"
-      when "G"
-        return "C"
-      when "A"
-        return "U" if type == "DNA"
-        return "T" if type == "RNA"
-      when "T"
-        return "A" if type == "DNA"
-        raise ArgumentError, "T is not an RNA nucleotide" if type == "RNA"
-      when "U"
-        return "A" if type == "RNA"
-        raise ArgumentError, "U is not an RNA nucleotide" if type == "DNA"
-      else
-        raise ArgumentError, "#{nucleotide} is not a valid nucleotide"
+      letter = nucleotide.upcase
+
+      if type == "DNA"
+        raise ArgumentError, "#{letter} is not a DNA nucleotide" if !DNA[letter]
+        return DNA[letter]
+      else # type = "RNA"
+        raise ArgumentError, "#{letter} is not an RNA nucleotide" if !RNA[letter]
+        return RNA[letter]
       end
     end
 end
